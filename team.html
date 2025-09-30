@@ -1,0 +1,72 @@
+<!-- team.html (已更新) -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="team_title">团队成员 - AI Security Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 确保 Font Awesome 图标库已引入 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AI SECURITY LAB</div>
+            <ul>
+                <li><a href="index.html" class="nav-link" data-lang-key="nav_home">首页</a></li>
+                <li><a href="team.html" class="nav-link active" data-lang-key="nav_team">团队成员</a></li>
+                <li><a href="publications.html" class="nav-link" data-lang-key="nav_publications">研究动态</a></li>
+                <li><a href="contact.html" class="nav-link" data-lang-key="nav_contact">联系我们</a></li>
+                <li>
+                    <select class="language-selector" id="language-selector">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <h2 class="page-title" data-lang-key="team_meet_the_team">Meet the Team</h2>
+        <div class="team-container">
+            <!-- 卡片1 -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/150" alt="周维">
+                <h3 data-lang-key="team_zhouwei_name">周维</h3>
+                <p data-lang-key="team_zhouwei_title">教授、博士生导师</p>
+                <p data-lang-key="team_zhouwei_research">研究方向: 人工智能安全、生物信息</p>
+                <!-- 新增：邮箱链接 -->
+                <div class="links">
+                    <a href="mailto:zhouwei@example.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <!-- 卡片2 -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/150" alt="何臻力">
+                <h3 data-lang-key="team_hezhenli_name">何臻力</h3>
+                <p data-lang-key="team_hezhenli_title">副教授、硕士生导师</p>
+                <p data-lang-key="team_hezhenli_research">研究方向: 边缘计算、物联网</p>
+                 <!-- 新增：邮箱链接 -->
+                 <div class="links">
+                    <a href="mailto:hezhenli@example.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <!-- 卡片3 -->
+            <div class="team-card">
+                <img src="https://via.placeholder.com/150" alt="巫思杏">
+                <h3 data-lang-key="team_wusixing_name">巫思杏</h3>
+                <p data-lang-key="team_wusixing_title">讲师、硕士生导师</p>
+                <p data-lang-key="team_wusixing_research">研究方向: 自然语言处理、大语言模型</p>
+                <div class="links">
+                    <a href="mailto:wusixing@example.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <!-- 请继续为您其他的导师卡片添加上面的 <div class="links">...</div> 部分 -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

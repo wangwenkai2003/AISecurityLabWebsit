@@ -1,0 +1,205 @@
+/* style.css */
+:root {
+    --primary-100: #3F51B5;
+    --primary-200: #757de8;
+    --primary-300: #dedeff;
+    --accent-100:  #2196F3;
+    --accent-200:  #003f8f;
+    --text-100:    #333333;
+    --text-200:    #5c5c5c;
+    --bg-100:      #FFFFFF;
+    --bg-200:      #f5f5f5;
+    --bg-300:      #cccccc;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    padding-top: 80px; /* 为固定的导航栏留出空间 */
+}
+
+a {
+    color: var(--accent-100);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-100);
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--bg-200);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-100);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+}
+
+nav ul a {
+    color: var(--text-100);
+    font-weight: 500;
+    padding-bottom: 5px;
+}
+
+/* 新增：导航栏当前页面高亮样式 */
+nav ul a.active {
+    color: var(--primary-100);
+    border-bottom: 2px solid var(--primary-100);
+}
+
+/* 新增：语言选择框样式 */
+.language-selector {
+    border: 1px solid var(--bg-300);
+    border-radius: 4px;
+    padding: 5px;
+    font-family: inherit;
+    color: var(--text-200);
+    background-color: var(--bg-100);
+}
+
+/* 页面通用容器 */
+.page-container {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 2rem auto;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-100);
+}
+
+/* 主页头部区域 */
+#hero {
+    height: calc(100vh - 80px); /* 减去导航栏高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-200);
+}
+
+.hero-content h1 { font-size: 3rem; color: var(--text-100); }
+.hero-content h2 { font-size: 4.5rem; color: var(--primary-100); }
+.hero-content p { color: var(--text-200); }
+
+/* 团队页面 */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.team-card {
+    background-color: var(--bg-100);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.team-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--bg-200);
+}
+.team-card h3 { margin: 0.5rem 0; color: var(--primary-100); }
+.team-card p { color: var(--text-200); font-size: 0.9rem; margin: 0.2rem 0; }
+.team-card .links a { margin: 0 0.5rem; font-size: 1.2rem; }
+
+/* 研究动态页面 */
+.publications-container { max-width: 900px; margin: 0 auto; }
+.publication-item {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--bg-300);
+    padding-bottom: 1.5rem;
+}
+.publication-item p { margin: 0.5rem 0; line-height: 1.6; }
+.publication-item .title { font-weight: bold; font-size: 1.1rem; color: var(--text-100); }
+.publication-item .authors { color: var(--text-200); }
+.publication-item .venue { font-style: italic; color: var(--text-200); }
+.publication-item .links a {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 5px 12px;
+    border: 1px solid var(--primary-100);
+    color: var(--primary-100);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+.publication-item .links a:hover {
+    background-color: var(--primary-300);
+}
+
+
+/* 联系我们页面 */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.contact-info p { line-height: 1.8; font-size: 1.1rem; color: var(--text-200); }
+.contact-info a { font-weight: bold; }
+.map-container { border-radius: 8px; overflow: hidden; border: 1px solid var(--bg-300); }
+
+.copyright { text-align: center; margin-top: 4rem; color: var(--text-200); }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; } /* 在小屏幕上可以进一步做成汉堡菜单 */
+}
+
+.team-card .links {
+    margin-top: 1rem; /* 在文字和图标之间增加一些间距 */
+}
+
+.team-card .links a {
+    margin: 0 0.5rem; /* 为图标左右提供一些空间 */
+    font-size: 1.2rem; /* 设置一个合适的图标大小 */
+    color: var(--text-200); /* 使用次要文字颜色，保持低调 */
+    text-decoration: none; /* 移除链接的下划线 */
+}
+
+.team-card .links a:hover {
+    color: var(--primary-100); /* 鼠标悬停时，图标变为主题蓝色 */
+}
