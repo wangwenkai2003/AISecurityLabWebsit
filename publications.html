@@ -1,4 +1,4 @@
-<!-- publications.html -->
+<!-- publications.html (已更新) -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,6 +15,7 @@
                 <li><a href="index.html" class="nav-link" data-lang-key="nav_home">首页</a></li>
                 <li><a href="team.html" class="nav-link" data-lang-key="nav_team">团队成员</a></li>
                 <li><a href="publications.html" class="nav-link" data-lang-key="nav_publications">研究动态</a></li>
+                <li><a href="projects.html" class="nav-link" data-lang-key="nav_projects">转化项目</a></li>
                 <li><a href="contact.html" class="nav-link" data-lang-key="nav_contact">联系我们</a></li>
                 <li>
                     <select class="language-selector" id="language-selector">
@@ -27,10 +28,29 @@
     </header>
 
     <main class="page-container">
-        <h2 class="page-title" data-lang-key="publications_page_title">论文</h2>
-        <!-- 动态内容将被 JS 自动填充到这里 -->
+        <h2 class="page-title" data-lang-key="publications_page_title">Publications</h2>
+
+        <!-- 新增：筛选和排序控件 -->
+        <div class="filter-controls">
+            <div class="control-group">
+                <label for="year-filter" data-lang-key="filter_by_year">按年份筛选:</label>
+                <select id="year-filter">
+                    <option value="all" data-lang-key="filter_all_years">所有年份</option>
+                    <!-- 年份选项将由JS动态填充 -->
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="sort-order" data-lang-key="sort_by">排序:</label>
+                <select id="sort-order">
+                    <option value="newest" data-lang-key="sort_newest">最新优先</option>
+                    <option value="oldest" data-lang-key="sort_oldest">最早优先</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 动态内容将填充到这里 -->
         <div class="publications-container" id="publications-list-all">
-            <!-- 静态内容已被删除，这里是空的 -->
+            <!-- Loading... -->
         </div>
     </main>
 

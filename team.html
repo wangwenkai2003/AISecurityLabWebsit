@@ -1,4 +1,4 @@
-<!-- team.html (已更新) -->
+<!-- team.html (已完全重构) -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-key="team_title">团队成员 - AI Security Lab</title>
     <link rel="stylesheet" href="style.css">
-    <!-- 确保 Font Awesome 图标库已引入 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">AISG</div>
+            <div class="logo">AI SECURITY LAB</div>
             <ul>
                 <li><a href="index.html" class="nav-link" data-lang-key="nav_home">首页</a></li>
                 <li><a href="team.html" class="nav-link active" data-lang-key="nav_team">团队成员</a></li>
                 <li><a href="publications.html" class="nav-link" data-lang-key="nav_publications">研究动态</a></li>
+                <li><a href="projects.html" class="nav-link" data-lang-key="nav_projects">转化项目</a></li>
                 <li><a href="contact.html" class="nav-link" data-lang-key="nav_contact">联系我们</a></li>
                 <li>
                     <select class="language-selector" id="language-selector">
@@ -29,42 +29,158 @@
     </header>
 
     <main class="page-container">
-        <h2 class="page-title" data-lang-key="team_meet_the_team">导师</h2>
+        
+        <!-- ========== 导师板块 ========== -->
+        <h2 class="page-title" data-lang-key="team_advisors_title">导师</h2>
         <div class="team-container">
-            <!-- 卡片1 -->
+            
+            <!-- 周维 -->
             <div class="team-card">
-                <img src="https://via.placeholder.com/150" alt="周维">
-                <h3 data-lang-key="team_zhouwei_name">周维</h3>
-                <p data-lang-key="team_zhouwei_title">教授、博士生导师</p>
-                <p data-lang-key="team_zhouwei_research">研究方向: 人工智能安全、生物信息</p>
-                <!-- 新增：邮箱链接 -->
-                <div class="links">
+                <img src="images/zhouwei.jpg" alt="周维">
+                <h3 class="team-name" data-lang-key="team_zhouwei_name">周维</h3>
+                <p class="team-title" data-lang-key="team_zhouwei_title">教授、博士生导师</p>
+                <div class="team-links">
+                    <a href="http://www.sei.ynu.edu.cn/info/1023/1106.htm" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
                     <a href="mailto:zwei@ynu.edu.cn" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
+                <p class="team-research" data-lang-key="team_zhouwei_research">人工智能安全、生物信息</p>
             </div>
-            <!-- 卡片2 -->
+
+            <!-- 巫思杏 -->
             <div class="team-card">
-                <img src="https://via.placeholder.com/150" alt="何臻力">
-                <h3 data-lang-key="team_hezhenli_name">何臻力</h3>
-                <p data-lang-key="team_hezhenli_title">副教授、硕士生导师</p>
-                <p data-lang-key="team_hezhenli_research">研究方向: 边缘计算、物联网</p>
-                 <!-- 新增：邮箱链接 -->
-                 <div class="links">
-                    <a href="mailto:hezhenli@example.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                <img src="images/wusixing.jpg" alt="巫思杏">
+                <h3 class="team-name" data-lang-key="team_wusixing_name">巫思杏</h3>
+                <p class="team-title" data-lang-key="team_wusixing_title">讲师、硕士生导师</p>
+                <div class="team-links">
+                    <a href="http://www.sei.ynu.edu.cn/info/1023/2072.htm" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="mailto:wusixing@ynu.edu.cn" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
+                <p class="team-research" data-lang-key="team_wusixing_research">自然语言处理、大语言模型</p>
             </div>
-            <!-- 卡片3 -->
+
+            <!-- 董云云 -->
             <div class="team-card">
-                <img src="https://via.placeholder.com/150" alt="巫思杏">
-                <h3 data-lang-key="team_wusixing_name">巫思杏</h3>
-                <p data-lang-key="team_wusixing_title">讲师、硕士生导师</p>
-                <p data-lang-key="team_wusixing_research">研究方向: 自然语言处理、大语言模型</p>
-                <div class="links">
-                    <a href="mailto:wusixing@example.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                <img src="images/dongyunyun.jpg" alt="董云云">
+                <h3 class="team-name" data-lang-key="team_dongyunyun_name">董云云</h3>
+                <p class="team-title" data-lang-key="team_dongyunyun_title">讲师、硕士生导师</p>
+                <div class="team-links">
+                    <a href="http://www.sei.ynu.edu.cn/info/1023/2343.htm" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="mailto:dongyy929@163.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
+                <p class="team-research" data-lang-key="team_dongyunyun_research">大模型水印、图像隐写</p>
             </div>
-            <!-- 请继续为您其他的导师卡片添加上面的 <div class="links">...</div> 部分 -->
+            
+            <!-- 高嵩 -->
+            <div class="team-card">
+                <img src="images/gaosong.jpg" alt="高嵩">
+                <h3 class="team-name" data-lang-key="team_gaosong_name">高嵩</h3>
+                <p class="team-title" data-lang-key="team_gaosong_title">讲师、硕士生导师</p>
+                <div class="team-links">
+                    <a href="javascript:void(0);" class="disabled" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="javascript:void(0);" class="disabled" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_gaosong_research">对抗攻击、对抗防御</p>
+            </div>
+
+            <!-- 宋冰冰 -->
+            <div class="team-card">
+                <img src="images/songbingbing.jpg" alt="宋冰冰">
+                <h3 class="team-name" data-lang-key="team_songbingbing_name">宋冰冰</h3>
+                <p class="team-title" data-lang-key="team_songbingbing_title">讲师、硕士生导师</p>
+                <div class="team-links">
+                    <a href="http://www.sei.ynu.edu.cn/info/1023/2344.htm" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="mailto:songbingbing@ynu.edu.cn" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_songbingbing_research">大模型安全对齐</p>
+            </div>
+
+            <!-- 唐丽 -->
+            <div class="team-card">
+                <img src="images/tangli.jpg" alt="唐丽">
+                <h3 class="team-name" data-lang-key="team_tangli_name">唐丽</h3>
+                <p class="team-title" data-lang-key="team_tangli_title">讲师、硕士生导师</p>
+                <div class="team-links">
+                    <a href="http://www.sei.ynu.edu.cn/info/1023/2363.htm" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="mailto:tangli@ynu.edu.cn" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_tangli_research">数据安全、图像安全</p>
+            </div>
         </div>
+
+        <!-- ========== 博士生板块 ========== -->
+        <h2 class="page-title" data-lang-key="team_phd_students_title">博士生</h2>
+        <div class="team-container">
+
+            <!-- 张锦弘 -->
+            <div class="team-card">
+                <img src="images/zhangjinhong.jpg" alt="张锦弘">
+                <h3 class="team-name" data-lang-key="team_zhangjinhong_name">张锦弘</h3>
+                <p class="team-title" data-lang-key="team_zhangjinhong_title">博士</p>
+                <div class="team-links">
+                    <a href="#" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="#" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_zhangjinhong_research">隐私保护、图像隐写、模型窃取</p>
+            </div>
+
+            <!-- 李钒效 -->
+            <div class="team-card">
+                <img src="images/lifanxiao.jpg" alt="李钒效">
+                <h3 class="team-name" data-lang-key="team_lifanxiao_name">李钒效</h3>
+                <p class="team-title" data-lang-key="team_lifanxiao_title">博士</p>
+                <div class="team-links">
+                    <a href="#" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="#" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_lifanxiao_research">虚假信息检测、可信大模型</p>
+            </div>
+
+            <!-- 付廷超 -->
+            <div class="team-card">
+                <img src="images/futingchao.jpg" alt="付廷超">
+                <h3 class="team-name" data-lang-key="team_futingchao_name">付廷超</h3>
+                <p class="team-title" data-lang-key="team_futingchao_title">博士</p>
+                <div class="team-links">
+                    <a href="#" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="#" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_futingchao_research">大模型知识编辑、可信大模型</p>
+            </div>
+
+            <!-- 张华栋 -->
+            <div class="team-card">
+                <img src="images/zhanghuadong.jpg" alt="张华栋">
+                <h3 class="team-name" data-lang-key="team_zhanghuadong_name">张华栋</h3>
+                <p class="team-title" data-lang-key="team_zhanghuadong_title">博士</p>
+                <div class="team-links">
+                    <a href="#" target="_blank" title="个人主页"><i class="fas fa-house"></i></a>
+                    <a href="#" title="发送邮件"><i class="fas fa-envelope"></i></a>
+                    <a href="#" target="_blank" title="谷歌学术"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="team-research" data-lang-key="team_zhanghuadong_research">生物信息</p>
+            </div>
+
+        </div>
+
     </main>
 
     <script src="script.js"></script>
