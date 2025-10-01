@@ -35,9 +35,10 @@ async function updatePublications() {
                             const titlePlaceholder = path.basename(file, '.pdf').replace(/_/g, ' ');
                             console.log(`  ➕ Found new file: ${relativePath}`);
                             newPublications.push({
-                                pdf: relativePath, // 本地文件路径，作为唯一标识
+                                pdf: relativePath,
                                 year: parseInt(year, 10),
-                                pdf_link: "", // 新增：PDF 链接字段，默认为空
+                                pdf_link: "",
+                                image: null, // 新增：配图字段，默认为 null
                                 title_zh: titlePlaceholder,
                                 title_en: titlePlaceholder,
                                 authors_zh: "作者...",
@@ -67,7 +68,7 @@ async function updatePublications() {
 
         if (newPublications.length > 0) {
             console.log(`\n✅ Successfully updated ${publicationsJsonPath}. Found ${newPublications.length} new entries.`);
-            console.log('🔔 Please open publications.json and fill in the "pdf_link" and other details for the new entries.');
+            console.log('🔔 Please open publications.json and fill in the details (like image, pdf_link, etc.) for the new entries.');
         } else {
             console.log(`\n✅ ${publicationsJsonPath} is already up-to-date. No new files found.`);
         }

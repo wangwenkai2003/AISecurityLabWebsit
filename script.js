@@ -1,8 +1,7 @@
-// script.js (最终版本，已补全团队成员英文翻译)
+// script.js (最终整合版)
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 翻译对象现在只包含网站框架的静态文本
     const translations = {
         en: {
             // -- Global Titles & Navigation --
@@ -19,15 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_contact: "Contact Us",
             
             // -- Hero Section --
-            hero_center_name: "Cross-border Network Security Research Center, Ministry of Education",
-            hero_slogan: "Exploring the Forefront of Large Model Security",
+            hero_center_name: "AI Security and Governance Lab", // 更新后的英文翻译
+            hero_slogan: "Exploring the forefront of AI security, ensuring every AI serves human well-being with verifiable safety and accountable governance.", // 更新后的英文翻译
             
             // -- Home Page Sections --
             home_news_title: "Latest News",
             home_contact_title: "Contact Us",
 
-            // --- 团队成员英文翻译 (Team Members English Translations) ---
-            // --- 这是本次修正的核心部分 ---
+            // -- Team Page --
             team_advisors_title: "Advisors",
             team_phd_students_title: "PhD Students",
 
@@ -35,23 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
             team_zhouwei_name: "Wei Zhou",
             team_zhouwei_title: "Professor, PhD Supervisor",
             team_zhouwei_research: "Artificial Intelligence Security, Bioinformatics",
-            
             team_wusixing_name: "Sixing Wu",
             team_wusixing_title: "Lecturer, Master's Supervisor",
             team_wusixing_research: "Natural Language Processing, Large Language Models",
-
             team_dongyunyun_name: "Yunyun Dong",
             team_dongyunyun_title: "Lecturer, Master's Supervisor",
             team_dongyunyun_research: "Large Model Watermarking, Image Steganography",
-
             team_gaosong_name: "Song Gao",
             team_gaosong_title: "Lecturer, Master's Supervisor",
             team_gaosong_research: "Adversarial Attacks, Adversarial Defense",
-
             team_songbingbing_name: "Bingbing Song",
             team_songbingbing_title: "Lecturer, Master's Supervisor",
             team_songbingbing_research: "Large Model Safety Alignment",
-
             team_tangli_name: "Li Tang",
             team_tangli_title: "Lecturer, Master's Supervisor",
             team_tangli_research: "Data Security, Image Security",
@@ -60,19 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
             team_zhangjinhong_name: "Jinhong Zhang",
             team_zhangjinhong_title: "PhD Student",
             team_zhangjinhong_research: "Privacy Protection, Image Steganography, Model Stealing",
-            
             team_lifanxiao_name: "Fanxiao Li",
             team_lifanxiao_title: "PhD Student",
             team_lifanxiao_research: "Disinformation Detection, Trustworthy Large Models",
-
             team_futingchao_name: "Tingchao Fu",
             team_futingchao_title: "PhD Student",
             team_futingchao_research: "Knowledge Editing for Large Models, Trustworthy Large Models",
-
             team_zhanghuadong_name: "Huadong Zhang",
             team_zhanghuadong_title: "PhD Student",
             team_zhanghuadong_research: "Bioinformatics",
-            // --- 翻译部分结束 ---
             
             // -- Publications Page --
             publications_page_title: "Publications",
@@ -108,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_contact: "联系我们",
             
             // -- Hero Section --
-            hero_center_name: "教育部跨境网络安全研究中心",
-            hero_slogan: "探索大模型安全的前沿领域",
+            hero_center_name: "人工智能安全与治理实验室",
+            hero_slogan: "探索人工智能安全的前沿领域，让每一项人工智能以可验证的安全与可问责的治理服务人类福祉",
 
             // -- Home Page Sections --
             home_news_title: "最新动态",
@@ -142,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sort_by: "排序:",
             sort_newest: "最新优先",
             sort_oldest: "最早优先",
-
+            
             // -- Projects Page --
             projects_page_title: "转化项目",
             project_learn_more: "了解更多",
@@ -168,14 +157,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sortBy === 'oldest') { processedData.reverse(); }
         if (filterYear !== 'all') { processedData = processedData.filter(item => item.year.toString() === filterYear); }
         const itemsToRender = limit ? processedData.slice(0, limit) : processedData;
+
         let html = '';
         itemsToRender.forEach(item => {
             const title = (currentLanguage === 'zh' ? item.title_zh : item.title_en) || item.pdf.split('/').pop().replace('.pdf', '');
             const authors = (currentLanguage === 'zh' ? item.authors_zh : item.authors_en) || '';
             const venue = (currentLanguage === 'zh' ? item.venue_zh : item.venue_en) || '';
+            
             const pdfText = translations[currentLanguage]['pub_pdf'] || 'PDF';
             const codeText = translations[currentLanguage]['pub_code'] || 'Code';
-            html += `<div class="publication-item"><p class="title">${title}</p><p class="authors">${authors}</p>${venue ? `<p class="venue">${venue}</p>` : ''}<div class="links">${item.pdf_link ? `<a href="${item.pdf_link}" target="_blank">${pdfText}</a>` : ''}${item.code && item.code !== '#' ? `<a href="${item.code}" target="_blank">${codeText}</a>` : ''}</div></div>`;
+
+            const imageHtml = item.image 
+                ? `<div class="publication-image"><img src="images/${item.image}" alt="Image for ${title}"></div>` 
+                : '';
+
+            html += `
+                <div class="publication-entry">
+                    ${imageHtml}
+                    <div class="publication-details">
+                        <p class="title">${title}</p>
+                        <p class="authors">${authors}</p>
+                        ${venue ? `<p class="venue">${venue}</p>` : ''}
+                        <div class="links">
+                            ${item.pdf_link ? `<a href="${item.pdf_link}" target="_blank">${pdfText}</a>` : ''}
+                            ${item.code && item.code !== '#' ? `<a href="${item.code}" target="_blank">${codeText}</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
         });
         container.innerHTML = html || `<p>No items to display.</p>`;
     };
