@@ -1,4 +1,6 @@
-/* style.css */
+/* style.css (最终整合版 - 已调整图片高度) */
+
+/* 1. 全局变量和基础样式 */
 :root {
     --primary-100: #3F51B5;
     --primary-200: #757de8;
@@ -31,6 +33,7 @@ a:hover {
     color: var(--primary-100);
 }
 
+/* 2. 导航栏 */
 header {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem 2rem;
@@ -71,13 +74,11 @@ nav ul a {
     padding-bottom: 5px;
 }
 
-/* 新增：导航栏当前页面高亮样式 */
 nav ul a.active {
     color: var(--primary-100);
     border-bottom: 2px solid var(--primary-100);
 }
 
-/* 新增：语言选择框样式 */
 .language-selector {
     border: 1px solid var(--bg-300);
     border-radius: 4px;
@@ -87,7 +88,7 @@ nav ul a.active {
     background-color: var(--bg-100);
 }
 
-/* 页面通用容器 */
+/* 3. 通用页面布局 */
 .page-container {
     padding: 2rem;
     max-width: 1100px;
@@ -97,13 +98,17 @@ nav ul a.active {
 .page-title {
     text-align: center;
     font-size: 2.5rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
     color: var(--primary-100);
 }
+.page-container > .page-title:first-child {
+    margin-top: 0;
+}
 
-/* 主页头部区域 */
+/* 4. 主页 Hero 区域 */
 #hero {
-    height: calc(100vh - 80px); /* 减去导航栏高度 */
+    height: calc(100vh - 80px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,9 +118,9 @@ nav ul a.active {
 
 .hero-content h1 { font-size: 3rem; color: var(--text-100); }
 .hero-content h2 { font-size: 4.5rem; color: var(--primary-100); }
-.hero-content p { color: var(--text-200); }
+.hero-content p { color: var(--text-200); max-width: 60ch; margin: 1rem auto 0; line-height: 1.6; }
 
-/* 团队页面 */
+/* 5. 团队成员页面 */
 .team-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -125,14 +130,18 @@ nav ul a.active {
 
 .team-card {
     background-color: var(--bg-100);
-    padding: 1.5rem;
-    border-radius: 8px;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--bg-200);
 }
+
 .team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
+
 .team-card img {
     width: 150px;
     height: 150px;
@@ -141,100 +150,198 @@ nav ul a.active {
     margin-bottom: 1rem;
     border: 3px solid var(--bg-200);
 }
-.team-card h3 { margin: 0.5rem 0; color: var(--primary-100); }
-.team-card p { color: var(--text-200); font-size: 0.9rem; margin: 0.2rem 0; }
-.team-card .links a { margin: 0 0.5rem; font-size: 1.2rem; }
 
-/* 研究动态页面 */
-.publications-container { max-width: 900px; margin: 0 auto; }
-.publication-item {
-    margin-bottom: 2.5rem;
-    border-bottom: 1px solid var(--bg-300);
-    padding-bottom: 1.5rem;
-}
-.publication-item p { margin: 0.5rem 0; line-height: 1.6; }
-.publication-item .title { font-weight: bold; font-size: 1.1rem; color: var(--text-100); }
-.publication-item .authors { color: var(--text-200); }
-.publication-item .venue { font-style: italic; color: var(--text-200); }
-.publication-item .links a {
-    display: inline-block;
-    margin-right: 1rem;
-    padding: 5px 12px;
-    border: 1px solid var(--primary-100);
+.team-name {
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
     color: var(--primary-100);
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-.publication-item .links a:hover {
-    background-color: var(--primary-300);
 }
 
-
-/* 联系我们页面 */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-.contact-info p { line-height: 1.8; font-size: 1.1rem; color: var(--text-200); }
-.contact-info a { font-weight: bold; }
-.map-container { border-radius: 8px; overflow: hidden; border: 1px solid var(--bg-300); }
-
-.copyright { text-align: center; margin-top: 4rem; color: var(--text-200); }
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
-    nav ul { display: none; } /* 在小屏幕上可以进一步做成汉堡菜单 */
+.team-title {
+    color: var(--text-200);
+    font-size: 0.95rem;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    min-height: 2.5em;
 }
 
-.team-card .links {
-    margin-top: 1rem; /* 在文字和图标之间增加一些间距 */
+.team-links {
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-.team-card .links a {
-    margin: 0 0.5rem; /* 为图标左右提供一些空间 */
-    font-size: 1.2rem; /* 设置一个合适的图标大小 */
-    color: var(--text-200); /* 使用次要文字颜色，保持低调 */
-    text-decoration: none; /* 移除链接的下划线 */
+.team-links a {
+    font-size: 1.5rem;
+    color: var(--primary-100);
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.team-card .links a:hover {
-    color: var(--primary-100); /* 鼠标悬停时，图标变为主题蓝色 */
+.team-links a:hover {
+    transform: scale(1.25);
+    color: var(--accent-100);
 }
 
 .team-links a.disabled {
-    color: #cccccc; /* 设置为灰色 */
-    cursor: not-allowed; /* 鼠标变为禁止图标 */
+    color: #cccccc;
+    cursor: not-allowed;
 }
 
 .team-links a.disabled:hover {
-    transform: none; /* 移除悬浮放大效果 */
-    color: #cccccc; /* 悬浮时依然是灰色 */
+    transform: none;
+    color: #cccccc;
 }
 
-/* 调整页面标题的上边距，让板块之间分隔更明显 */
-.page-title {
-    margin-top: 3rem; 
-}
-.page-container > .page-title:first-child {
-    margin-top: 0; /* 第一个标题不需要上边距 */
+.team-research {
+    font-size: 0.9rem;
+    color: var(--text-200);
+    line-height: 1.6;
+    margin-top: 0;
 }
 
+
+/* 6. 研究动态页面 (Publications) */
+.publications-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: var(--bg-200);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.control-group label {
+    font-weight: 500;
+    color: var(--text-200);
+}
+
+.control-group select {
+    padding: 0.5rem;
+    border: 1px solid var(--bg-300);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--bg-100);
+}
+
+/* 通用条目容器样式 */
+.publication-entry-visual, 
+.publication-entry-text {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--bg-300);
+}
+
+/* 图文模式独有样式 */
+.publication-entry-visual {
+    display: flex;
+    flex-direction: column; /* 移动端：图片在上 */
+    gap: 1.5rem;
+}
+
+.publication-image {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.publication-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--bg-300);
+    height: 14rem;
+}
+
+/* 纯文本模式独有样式 */
+.publication-entry-text {
+    display: block;
+}
+
+/* 详情内容的通用样式 */
+.publication-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.publication-details p {
+    margin: 0;
+}
+
+.publication-details .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--accent-100);
+    margin-bottom: 0.75rem;
+}
+
+.publication-details .authors {
+    font-size: 1.1rem;
+    color: var(--text-100);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.publication-details .venue {
+    font-size: 1rem;
+    color: var(--text-200);
+    margin-bottom: 1.25rem;
+}
+
+.publication-details .links a {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    margin-right: 0.75rem;
+    background-color: var(--bg-100);
+    color: var(--primary-100);
+    border: 1px solid var(--primary-100);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.publication-details .links a:hover {
+    background-color: var(--primary-300);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(63, 81, 181, 0.2);
+}
+
+.publication-details .links a:last-child {
+    margin-right: 0;
+}
+
+/* 7. 转化项目页面 */
 .projects-container {
     display: grid;
-    grid-template-columns: 1fr; /* 默认单列布局 */
+    grid-template-columns: 1fr;
     gap: 2.5rem;
 }
 
 .project-card {
     display: flex;
-    flex-direction: column; /* 在小屏幕上，图片在上文字在下 */
+    flex-direction: column;
     background-color: var(--bg-100);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* 保证图片圆角 */
+    overflow: hidden;
     border: 1px solid var(--bg-200);
     transition: box-shadow 0.3s ease;
 }
@@ -245,15 +352,15 @@ nav ul a.active {
 
 .project-card img {
     width: 100%;
-    height: 220px; /* 固定图片高度 */
-    object-fit: cover; /* 保证图片不变形 */
+    height: 220px;
+    object-fit: cover;
 }
 
 .project-content {
     padding: 1.5rem 2rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* 让内容区域填满剩余空间 */
+    flex-grow: 1;
 }
 
 .project-title {
@@ -266,7 +373,7 @@ nav ul a.active {
 .project-description {
     color: var(--text-200);
     line-height: 1.7;
-    flex-grow: 1; /* 让描述占据尽可能多的空间，将按钮推到底部 */
+    flex-grow: 1;
 }
 
 .project-link {
@@ -289,128 +396,107 @@ nav ul a.active {
     color: var(--bg-100);
 }
 
-/* 在大屏幕上，变为图片在左，文字在右的布局 */
+/* 8. 联系我们页面 */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.contact-info p { 
+    line-height: 1.8; 
+    font-size: 1.1rem; 
+    color: var(--text-200); 
+}
+.contact-info a { 
+    font-weight: bold; 
+}
+.map-container { 
+    border-radius: 8px; 
+    overflow: hidden; 
+    border: 1px solid var(--bg-300); 
+}
+.copyright { 
+    text-align: center; 
+    margin-top: 4rem; 
+    color: var(--text-200); 
+}
+
+/* 9. 响应式设计 */
 @media (min-width: 768px) {
+    /* 转化项目卡片变为左右布局 */
     .project-card {
         flex-direction: row;
     }
     .project-card img {
-        width: 300px; /* 固定图片宽度 */
+        width: 300px;
         height: auto;
     }
-}
-/* --- 新增 CSS 代码：用于筛选控件 --- */
-.filter-controls {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 1rem;
-    background-color: var(--bg-200);
-    border-radius: 8px;
-    flex-wrap: wrap; /* 在小屏幕上换行 */
-}
 
-.control-group {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.control-group label {
-    font-weight: 500;
-    color: var(--text-200);
-}
-
-.control-group select {
-    padding: 0.5rem;
-    border: 1px solid var(--bg-300);
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: var(--bg-100);
-}
-
-/* 移除旧的 publication-item 底部边框 */
-.publication-item {
-    border-bottom: none;
-}
-
-/* 新的 publication-entry 容器，实现图文布局 */
-.publication-entry {
-    display: flex;
-    flex-direction: column; /* 移动端：图片在上，文字在下 */
-    gap: 1.5rem;
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--bg-300); /* 将边框移到这里 */
-}
-
-/* 论文配图的容器 */
-.publication-image {
-    flex-shrink: 0; /* 防止图片被压缩 */
-    width: 80%; /* 移动端宽度占满 */
-    /* PC端最大宽度 */
-    margin: 0 auto; /* 移动端居中 */
-    height: 100%;
-}
-
-.publication-image img {
-    width: 100%;
-    border-radius: 2px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--bg-300);
-}
-
-/* 论文详细信息容器 */
-.publication-details {
-    display: flex;
-    flex-direction: column;
-}
-
-/* 重置 <p> 标签的边距 */
-.publication-details p {
-    margin: 0;
-}
-
-/* 新的标题样式 */
-.publication-details .title {
-    font-size: 1.5rem; /* 增大标题字号 */
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--accent-100); /* 使用强调色 */
-    margin-bottom: 0.5rem;
-}
-
-/* 新的作者样式 */
-.publication-details .authors {
-    font-size: 1.1rem;
-    color: var(--text-100);
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}
-
-/* 新的会议/期刊样式 */
-.publication-details .venue {
-    font-size: 1rem;
-    color: var(--text-200);
-    margin-bottom: 1.25rem;
-}
-
-/* 按钮链接行 (PDF, Code 等) */
-.publication-details .links a {
-    /* 样式已在之前定义，这里可以微调 */
-    font-size: 1rem;
-    padding: 0.5rem 1.2rem;
-}
-
-/* 媒体查询：当屏幕宽度大于 768px (平板/PC) 时，应用左右布局 */
-@media (min-width: 768px) {
-    .publication-entry {
-        flex-direction: row; /* PC端：左右布局 */
+    /* 研究动态图文模式变为左右布局并垂直居中 */
+    .publication-entry-visual {
+        flex-direction: row;
+        align-items: center;
         gap: 2.5rem;
     }
-
+    
+    /* --- 这是本次的核心修改 --- */
     .publication-image {
-        width: 280px; /* PC端固定宽度 */
-        margin: 0; /* PC端取消居中 */
+        width: 40%;         /* 使用比例宽度 */
+        max-width: 320px;   /* 设置最大宽度 */
+        margin: 0;
     }
+}
+
+@media (max-width: 768px) {
+    .contact-grid { 
+        grid-template-columns: 1fr; 
+    }
+    nav ul { 
+        display: none; /* 在小屏幕上隐藏导航，可以进一步做成汉堡菜单 */
+    }
+}
+
+/* 年级标题 (研三, 研二...) 的样式 */
+.grade-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-100);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-300);
+}
+
+/* 调整 .team-container 用于更小的学生卡片 */
+.student-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* 学生卡片的简洁样式 */
+.student-card {
+    background-color: var(--bg-100);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--bg-200);
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.student-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-100);
+    margin: 0 0 0.5rem 0;
+}
+
+.student-research {
+    font-size: 0.9rem;
+    color: var(--text-200);
+    margin: 0;
 }
