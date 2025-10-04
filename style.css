@@ -500,3 +500,13 @@ nav ul a.active {
     color: var(--text-200);
     margin: 0;
 }
+#hero .hero-content h1 {
+    display: block; 
+}
+
+/* 当 body 标签有 .lang-en 这个 class 时，
+   并且目标是 #hero 区域内的 h1 标签，
+   则将其隐藏 */
+body.lang-en #hero .hero-content h1 {
+    display: none;
+}

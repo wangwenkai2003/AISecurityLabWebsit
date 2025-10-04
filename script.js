@@ -235,6 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
         localStorage.setItem('language', language);
         if(languageSelector) languageSelector.value = language;
+          if (language === 'en') {
+            document.body.classList.add('lang-en');
+            document.body.classList.remove('lang-zh');
+        } else {
+            document.body.classList.add('lang-zh');
+            document.body.classList.remove('lang-en');
+        }
         rerenderAllContent();
     };
     
